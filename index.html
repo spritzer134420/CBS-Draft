@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADP Board — CBS vs Underdog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="board-header">
+  <div class="header-inner">
+    <div class="header-title">
+      <span class="eyebrow">2026 Redraft · Board Room</span>
+      <h1>ADP Board</h1>
+      <p class="subtitle">CBS vs. Underdog — where the boards disagree</p>
+    </div>
+    <div class="header-stats" id="header-stats">
+      <div class="stat">
+        <span class="stat-num" id="stat-total">—</span>
+        <span class="stat-label">players tracked</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="stat-flagged">—</span>
+        <span class="stat-label">flagged (5+ pos gap)</span>
+      </div>
+      <div class="stat stat-value">
+        <span class="stat-num" id="stat-value">—</span>
+        <span class="stat-label">value plays</span>
+      </div>
+      <div class="stat stat-overrated">
+        <span class="stat-num" id="stat-overrated">—</span>
+        <span class="stat-label">overrated</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="position-tabs" id="position-tabs">
+    <button class="tab-btn active" data-pos="ALL">All positions</button>
+    <button class="tab-btn" data-pos="QB">QB</button>
+    <button class="tab-btn" data-pos="RB">RB</button>
+    <button class="tab-btn" data-pos="WR">WR</button>
+    <button class="tab-btn" data-pos="TE">TE</button>
+  </div>
+
+  <div class="controls">
+    <div class="sort-group">
+      <span class="control-label">Sort by</span>
+      <button class="sort-btn active" data-sort="adp_cbs" data-dir="asc">CBS ADP</button>
+      <button class="sort-btn" data-sort="adp_underdog" data-dir="asc">Underdog ADP</button>
+    </div>
+    <div class="filter-group">
+      <label class="toggle">
+        <input type="checkbox" id="filter-flagged">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Flagged only</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="filter-value">
+        <span class="toggle-track toggle-track-value"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Value plays only <span class="value-dot"></span></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="filter-overrated">
+        <span class="toggle-track toggle-track-overrated"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Overrated only <span class="overrated-dot"></span></span>
+      </label>
+    </div>
+    <div class="search-group">
+      <input type="text" id="search-box" placeholder="Find a player…">
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table id="adp-table">
+      <thead>
+        <tr>
+          <th class="col-player">Player</th>
+          <th class="col-team">Team</th>
+          <th class="col-pos">Pos</th>
+          <th class="col-num sortable" data-sort="adp_cbs">CBS ADP</th>
+          <th class="col-posrank">CBS Pos Rk</th>
+          <th class="col-num sortable" data-sort="adp_underdog">UD ADP</th>
+          <th class="col-posrank">UD Pos Rk</th>
+          <th class="col-num sortable" data-sort="pos_rank_diff">Pos Δ</th>
+          <th class="col-flag">Value</th>
+          <th class="col-flag">Overrated</th>
+          <th class="col-vibes">Garrett's Vibes Value</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- rows injected by script.js -->
+      </tbody>
+    </table>
+  </div>
+
+  <p class="empty-state" id="empty-state" hidden>No players match this filter.</p>
+
+  <footer class="board-footer">
+    <p>Value = CBS ranks the player 5+ spots worse at his position than Underdog does — a name CBS may be sleeping on.</p>
+    <p>Overrated = CBS ranks the player 5+ spots better at his position than Underdog does — a name CBS may be too high on.</p>
+    <p class="footer-note">Vibes values save automatically in this browser.</p>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
